@@ -12,29 +12,28 @@
         <vm:UserTaskViewModel x:Key="UserTaskViewModel"/>
     </Window.Resources>
     <Grid DataContext="{Binding Source={StaticResource UserTaskViewModel}}">
-        <DatePicker Name ="tmDatePicker" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,12,7.6,0" Width="144" ></DatePicker>
+        <TextBox Name ="tmDatePicker" IsReadOnly="True" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,12,12.6,0" Width="96" Height="22" ></TextBox>
 
-        <Button Name ="CreateTask" Content="Create" Command ="{Binding CreateCommand}" HorizontalAlignment="Center" Margin="535,57,236.6,0" VerticalAlignment="Top" Width="122" Height="29" Click="Button_Click"/>
-        <Button Name ="UpdateTask" Content="Update" Command ="{Binding UpdateSelectedItem}"  CommandParameter="{Binding}" HorizontalAlignment="Center" Margin="535,100,236.6,0" VerticalAlignment="Top" Width="122" Height="29" Click="Button_Click"/>
+        <Button Name ="CreateTask" Content="Create" Command ="{Binding CreateCommand}" HorizontalAlignment="Center" Margin="535,57,236.6,0" VerticalAlignment="Top" Width="122" Height="29"/>
+        <Button Name ="UpdateTask" Content="Update" Command ="{Binding UpdateSelectedItem}"  CommandParameter="{Binding}" HorizontalAlignment="Center" Margin="535,100,236.6,0" VerticalAlignment="Top" Width="122" Height="29"/>
 
         <!--<Button Name ="DeleteTask" Content="Delete" Command ="{Binding DeleteSelectedItem}" CommandParameter="{Binding}" HorizontalAlignment="Center" Margin="535,90,236.6,0" VerticalAlignment="Top" Width="122" Height="29" Click="Button_Click"/>-->
-        <TextBox Name ="id_TextBox" HorizontalAlignment="Left" Height="23" Margin="204,31,0,0" TextWrapping="Wrap" Text="{Binding UserTask.TaskID, Mode=TwoWay}" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name ="taskname_TextBox" HorizontalAlignment="Left" Height="23" Margin="204,0,0,351.4" TextWrapping="Wrap" Text="{Binding UserTask.TaskName, Mode=TwoWay}" VerticalAlignment="Bottom" Width="120"  RenderTransformOrigin="0.493,1.025"/>
+        <TextBox Name ="id_TextBox" HorizontalAlignment="Left" Height="23" Margin="204,29,0,0" TextWrapping="Wrap" Text="{Binding UserTask.TaskID, Mode=TwoWay}" VerticalAlignment="Top" Width="120" TextChanged="id_TextBox_TextChanged"/>
+        <TextBox Name ="taskname_TextBox" HorizontalAlignment="Left" Height="23" Margin="204,0,0,350.4" TextWrapping="Wrap" Text="{Binding UserTask.TaskName, Mode=TwoWay}" VerticalAlignment="Bottom" Width="120"  RenderTransformOrigin="0.493,1.025"/>
         <!--<TextBox Name ="status_TextBox" HorizontalAlignment="Left" Height="23" Margin="204,150,0,0" TextWrapping="Wrap" Text="{Binding UserTask.Status, Mode=TwoWay}" VerticalAlignment="Top" Width="120"/>-->
 
         <ComboBox Name="status_combobox" Text="{Binding UserTask.Status, Mode=TwoWay}" BorderBrush="White" HorizontalAlignment="Left" Margin="204,150,0,0" VerticalAlignment="Top" Width="120" >
             <ComboBoxItem></ComboBoxItem>
             <ComboBoxItem>Pending</ComboBoxItem>
             <ComboBoxItem>Completed</ComboBoxItem>
-            <ComboBoxItem>Overdue</ComboBoxItem>
         </ComboBox>
-        <Label Content="Task ID" HorizontalAlignment="Left" Margin="64,28,0,0" VerticalAlignment="Top" Width="99"/>
-        <Label Content="Task Name" HorizontalAlignment="Left" Margin="64,64,0,0" VerticalAlignment="Top" Width="99"/>
+        <Label Content="Task ID" HorizontalAlignment="Left" Margin="64,26,0,0" VerticalAlignment="Top" Width="99"/>
+        <Label Content="Task Name" HorizontalAlignment="Left" Margin="64,65,0,0" VerticalAlignment="Top" Width="99"/>
         <Label Content="Due Date" HorizontalAlignment="Left" Margin="64,110,0,0" VerticalAlignment="Top" Width="99"/>
         <Label Content="Status" HorizontalAlignment="Left" Margin="64,150,0,0" VerticalAlignment="Top" Width="99"/>
 
         <DatePicker Name ="dueDate_DatePicker" HorizontalAlignment="Left" Margin="204,109,0,0" Text="{Binding UserTask.DueDate, Mode=TwoWay}" VerticalAlignment="Top" Width="120"/>
-        <ListView ItemsSource="{Binding UserTasks}"  HorizontalAlignment="Left" Height="198" Margin="64,230,0,0" VerticalAlignment="Top" Width="743" RenderTransformOrigin="0.453,0.569">
+        <ListView ItemsSource="{Binding UserTasks}" HorizontalAlignment="Left" Height="198" Margin="64,230,0,0" VerticalAlignment="Top" Width="743" RenderTransformOrigin="0.453,0.569">
             <ListView.View >
                 <GridView>
                     <GridViewColumn Header="TaskID" DisplayMemberBinding="{Binding TaskID}" Width="100"/>
@@ -44,7 +43,7 @@
                     <GridViewColumn Header="Action" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button DataContext="{Binding Source={StaticResource UserTaskViewModel}}" Content="Delete" Command="{Binding DeleteSelectedItem }" HorizontalAlignment="Center" VerticalAlignment="Top" Width="95" Height="20" CommandParameter="{Binding UserTask.TaskID}" Click="Button_Click"/>
+                                <Button DataContext="{Binding Source={StaticResource UserTaskViewModel}}" Content="Delete" Command="{Binding DeleteSelectedItem }" HorizontalAlignment="Center" VerticalAlignment="Top" Width="95" Height="20" CommandParameter="{Binding UserTask.TaskID}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
 
@@ -67,6 +66,8 @@
         </ListView>
         <!--<Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>-->
         <Label Name="Message" Content ="{Binding AppMessage , Mode= TwoWay}" Foreground="Red" HorizontalAlignment="Left" Margin="64,191,0,0" VerticalAlignment="Top" Width="543" Height="25"/>
-        
+        <Label Content="Current Date" HorizontalAlignment="Left" Margin="700,9,0,0" VerticalAlignment="Top" Width="84"/>
+        <Label Name="Validate" Content="Please enter numbers only" Foreground="Red" HorizontalAlignment="Left" Margin="199,50,0,0" FontSize="7" VerticalAlignment="Top" Width="194" Height="17"/>
+
     </Grid>
 </Window>

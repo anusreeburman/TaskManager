@@ -82,7 +82,7 @@ namespace TaskManager.ViewModel
             {
                 if (_UpdateSelectedItem == null)
                 {
-                    _UpdateSelectedItem = new RelayCommand(UpdateItem, CanDeleteExecute, false);
+                    _UpdateSelectedItem = new RelayCommand(UpdateItem, CanCreateExecute, false);
                 }
                 return _UpdateSelectedItem;
             }
@@ -92,15 +92,17 @@ namespace TaskManager.ViewModel
         /// <summary>
         /// Method: UpdateItem
         /// Parameters: UserTask.TaskID
-        /// Deletes an object of type UserTask with requested TaskID and removes it from in ObservableCollection called UserTasks
+        /// Description: Deletes an object of type UserTask with requested TaskID and removes it from in ObservableCollection called UserTasks
         /// </summary>
         private void DeleteItem(object parameter)
         {
+            //var taskId = SelectedRow.TaskID;
             foreach (UserTask uTask in UserTasks)
             {
                 if (uTask.TaskID == (int)parameter)
                 { 
                     UserTasks.Remove(uTask);
+                    AppMessage = "Task has been deleted";
                     break;
                 }
             }
@@ -109,7 +111,7 @@ namespace TaskManager.ViewModel
         /// <summary>
         /// Method: UpdateItem
         /// Parameters: Object
-        /// Updates an object of type UserTask  present in ObservableCollection called UserTasks
+        /// Description: Updates an object of type UserTask  present in ObservableCollection called UserTasks
         /// </summary>
         private void UpdateItem(object parameter)
         {
@@ -120,6 +122,7 @@ namespace TaskManager.ViewModel
                     uTask.TaskName = UserTask.TaskName;
                     uTask.Status = UserTask.Status;
                     uTask.DueDate = UserTask.DueDate;
+                    // If task is past due date, and mentioned as Pending, then mark status as Overdue
                     if (uTask.DueDate < DateTime.Today && uTask.Status != "Completed" )
                         uTask.Status = "Overdue";
                     AppMessage = " Task has been updated as requested";
@@ -143,7 +146,7 @@ namespace TaskManager.ViewModel
         /// <summary>
         /// Method: CreateExecute
         /// Parameters: Object
-        /// Creates an object of type UserTask and adds it to ObservableCollection called UserTasks
+        /// Description: Creates an object of type UserTask and adds it to ObservableCollection called UserTasks
         /// </summary>
         private void CreateExecute(object parameter)
         {
@@ -153,6 +156,7 @@ namespace TaskManager.ViewModel
             newTask.TaskName = UserTask.TaskName;           
             newTask.Status = UserTask.Status;
             newTask.DueDate = UserTask.DueDate.Date;
+            // If task is past due date, and mentioned as Pending, then mark status as Overdue
             if (newTask.DueDate < DateTime.Today && newTask.Status != "Completed")
                 newTask.Status = "Overdue";
 
@@ -170,20 +174,27 @@ namespace TaskManager.ViewModel
         }
 
 
-
+        /// <summary>
+        /// Method: CanDeleteExecute
+        /// Parameters: object
+        /// Description: Checks if the Delete button should be enabled/disabled. In this scenario, it will be enabled always.
+        /// </summary>
         private bool CanDeleteExecute(object parameter)
         {
-            if (string.IsNullOrEmpty(UserTask.TaskName) || string.IsNullOrEmpty(UserTask.TaskID.ToString()))
-            {
-                return false;
-            }
-            else
-                return true;
+            return true;
         }
 
+        /// <summary>
+        /// Method: CanCreateExecute
+        /// Parameters: object
+        /// Description: Checks if the Create and Update button should be enabled/disabled. In this scenario, it will be enabled if Task ID is populated. Else,
+        /// it will not allow the user to create/update the task without a TaskID
+        /// </summary>
         private bool CanCreateExecute(object parameter)
         {
-            if (string.IsNullOrEmpty(UserTask.TaskName) || string.IsNullOrEmpty(UserTask.TaskID.ToString()))
+            if (Global.updatedTaskID)
+                UserTask.TaskID = 0;
+            if (UserTask.TaskID.ToString() == "0")
             {
                 return false;
             }

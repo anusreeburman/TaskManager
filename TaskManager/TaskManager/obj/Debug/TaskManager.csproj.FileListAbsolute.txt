@@ -14,3 +14,19 @@ C:\Users\avikd\source\repos\TaskManager\TaskManager\obj\Debug\TaskManager.pdb
 C:\Users\avikd\source\repos\TaskManager\TaskManager\obj\Debug\View\MainWindow.g.cs
 C:\Users\avikd\source\repos\TaskManager\TaskManager\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\avikd\source\repos\TaskManager\TaskManager\obj\Debug\View\MainWindow.baml
+C:\Users\avikd\source\TaskManager Application\TaskManager\TaskManager\TaskManager\bin\Debug\TaskManager.exe.config
+C:\Users\avikd\source\TaskManager Application\TaskManager\TaskManager\TaskManager\bin\Debug\TaskManager.exe
+C:\Users\avikd\source\TaskManager Application\TaskManager\TaskManager\TaskManager\bin\Debug\TaskManager.pdb
+C:\Users\avikd\source\TaskManager Application\TaskManager\TaskManager\TaskManager\obj\Debug\TaskManager.csproj.AssemblyReference.cache
+C:\Users\avikd\source\TaskManager Application\TaskManager\TaskManager\TaskManager\obj\Debug\View\MainWindow.g.cs
+C:\Users\avikd\source\TaskManager Application\TaskManager\TaskManager\TaskManager\obj\Debug\App.g.cs
+C:\Users\avikd\source\TaskManager Application\TaskManager\TaskManager\TaskManager\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\avikd\source\TaskManager Application\TaskManager\TaskManager\TaskManager\obj\Debug\TaskManager_MarkupCompile.cache
+C:\Users\avikd\source\TaskManager Application\TaskManager\TaskManager\TaskManager\obj\Debug\TaskManager_MarkupCompile.lref
+C:\Users\avikd\source\TaskManager Application\TaskManager\TaskManager\TaskManager\obj\Debug\View\MainWindow.baml
+C:\Users\avikd\source\TaskManager Application\TaskManager\TaskManager\TaskManager\obj\Debug\TaskManager.g.resources
+C:\Users\avikd\source\TaskManager Application\TaskManager\TaskManager\TaskManager\obj\Debug\TaskManager.Properties.Resources.resources
+C:\Users\avikd\source\TaskManager Application\TaskManager\TaskManager\TaskManager\obj\Debug\TaskManager.csproj.GenerateResource.cache
+C:\Users\avikd\source\TaskManager Application\TaskManager\TaskManager\TaskManager\obj\Debug\TaskManager.csproj.CoreCompileInputs.cache
+C:\Users\avikd\source\TaskManager Application\TaskManager\TaskManager\TaskManager\obj\Debug\TaskManager.exe
+C:\Users\avikd\source\TaskManager Application\TaskManager\TaskManager\TaskManager\obj\Debug\TaskManager.pdb
